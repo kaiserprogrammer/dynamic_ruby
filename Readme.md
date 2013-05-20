@@ -1,5 +1,5 @@
 # Dynamic Scope for Ruby
-[![Build Status](https://secure.travis-ci.org/kaiserprogrammer/dynamic.png)](http://travis-ci.org/kaiserprogrammer/dynamic_ruby)
+[![Build Status](https://secure.travis-ci.org/kaiserprogrammer/dynamic_ruby.png)](http://travis-ci.org/kaiserprogrammer/dynamic_ruby)
 
 ## Setting Scope
 ```ruby
