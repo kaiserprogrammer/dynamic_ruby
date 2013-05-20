@@ -19,18 +19,3 @@ def dynamic(bindings={}, &block)
     end
   end
 end
-
-def test(name = dynamic[:name])
-  p name
-end
-
-if __FILE__ == $PROGRAM_NAME
-  dynamic(name: "jim") do
-    test
-    dynamic(name: "john") do
-      test
-    end
-    test
-  end
-  test("huan")
-end
