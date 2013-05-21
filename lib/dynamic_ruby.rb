@@ -9,12 +9,15 @@ def dynamic(bindings={}, &block)
       end
       Thread.current[name] = val
     end
-    block.call
-    bindings.each do |name, val|
-      if defined[name]
-        Thread.current[name] = defined[name]
-      else
-        Thread.current[name] = nil
+    begin
+      block.call
+    ensure
+      bindings.each do |name, val|
+        if defined[name]
+          Thread.current[name] = defined[name]
+        else
+          Thread.current[name] = nil
+        end
       end
     end
   end

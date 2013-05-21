@@ -42,4 +42,16 @@ describe "dynamic scope" do
     thr.join
     result.must_equal "right"
   end
+
+  it "should clear setting within an exception" do
+    result = nil
+    exfun = lambda { raise "do not set", dynamic[:name] }
+    proc do
+      dynamic name: "john" do
+        exfun.call
+      end
+    end.must_raise(TypeError)
+    result = dynamic[:name]
+    result.must_be_nil
+  end
 end
