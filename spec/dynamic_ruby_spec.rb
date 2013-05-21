@@ -45,12 +45,12 @@ describe "dynamic scope" do
 
   it "should clear setting within an exception" do
     result = nil
-    exfun = lambda { raise "do not set", dynamic[:name] }
-    proc do
+    begin
       dynamic name: "john" do
         exfun.call
       end
-    end.must_raise(TypeError)
+    rescue
+    end
     result = dynamic[:name]
     result.must_be_nil
   end
