@@ -9,7 +9,7 @@ describe "dynamic scope" do
       result = testfun.call
     end
     result.must_equal "john"
-    testfun.call.must_be_nil
+    testfun.call.must_equal :unbound_variable_name
   end
 
   it "should stack access to dynamically declare variables" do
@@ -52,6 +52,10 @@ describe "dynamic scope" do
     rescue
     end
     result = dynamic[:name]
-    result.must_be_nil
+    result.must_equal :unbound_variable_name
+  end
+
+  it "should be unbound variable when accessed before setting" do
+    dynamic[:setting].must_equal :unbound_variable_setting
   end
 end

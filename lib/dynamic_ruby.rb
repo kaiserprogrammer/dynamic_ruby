@@ -1,6 +1,15 @@
+class DynamicLookup
+  def [](name)
+    val = Thread.current[name]
+    val ? val : ("unbound_variable_" + name.to_s).to_sym
+  end
+end
+
+DYNAMIC_LOOKUP = DynamicLookup.new
+
 def dynamic(bindings={}, &block)
   if !block_given?
-    Thread.current
+    DYNAMIC_LOOKUP
   else
     defined = {}
     bindings.each do |name, val|
@@ -16,7 +25,7 @@ def dynamic(bindings={}, &block)
         if defined[name]
           Thread.current[name] = defined[name]
         else
-          Thread.current[name] = nil
+          Thread.current[name] = ("unbound_variable_" + name.to_s).to_sym
         end
       end
     end
