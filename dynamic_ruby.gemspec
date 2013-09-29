@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 Gem::Specification.new do |s|
   s.name = 'dynamic_ruby'
-  s.version = "1.1.1"
+  s.version = "2.0.0"
   s.author = 'Jürgen Bickert'
   s.homepage = 'http://juergenbickert.de'
   s.email = 'juergenbickert@gmail.com'
