@@ -3,18 +3,18 @@
 
 ## Setting Scope
 ```ruby
-# nothing set
+dynamic[:name] # => :unbound_variable_name
+
 dynamic name: "first" do
-  # it's set here
+  # already bound here
   dynamic[:name] # => "first"
   dynamic name: "second" do
     dynamic[:name] # => "second"
   end
   dynamic[:name] # => "first"
 end
-# nothing set again
 
-# no longer set here anymore
+dynamic[:name] # => :unbound_variable_name
 ```
 
 ## Multiple Variables
